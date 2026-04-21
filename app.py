@@ -11,11 +11,7 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 
 # Data load karne ka function
 def load_data():
-    try:
-        return conn.read(ttl=0) # ttl=0 ka matlab hamesha taza data
-    except Exception as e:
-        st.error("Google Sheet se connect nahi ho pa raha. Secrets check karein!")
-        return pd.DataFrame(columns=["Model", "Price", "Date"])
+    return conn.read(ttl=0)
 
 df = load_data()
 
